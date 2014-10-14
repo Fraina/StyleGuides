@@ -201,3 +201,15 @@ $(function(){
 	}
 
 })
+
+
+// -------------------------------------
+//   Outdated Browser
+// -------------------------------------
+
+outdatedBrowser({
+	bgColor: '#f25648',
+	color: '#ffffff',
+	lowerThan: 'transform',
+	languagePath: 'js/lang/en.html'
+})
