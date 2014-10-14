@@ -1,0 +1,191 @@
+// *************************************
+//
+//   Style Guides # Project Name
+//   -> 設計風格指南
+//
+// *************************************
+
+// -------------------------------------
+//   Import
+// -------------------------------------
+
+@import "normalize"
+@import "compass/css3/flexbox"
+@import "compass/css3/border-radius"
+
+// -------------------------------------
+//   Config
+// -------------------------------------
+
+// ----- Base ----- //
+
+$c-text: #212121
+$c-text-secondary: #9d9d9d
+$c-text-invert: #ffffff
+$c-palette-background: #414141
+
+// ----- Typography ----- //
+
+$b-fontFamily: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif
+$b-fontSize: 16px
+$b-fontSize-s: 75%
+$b-fontSize-m: 90%
+$b-fontSize-l: 115%
+$b-lineHeight: 1.5
+
+// ----- Sizing ----- //
+
+$b-space: 1.250em
+$b-space-s: 0.5 * $b-space
+$b-space-l: 2 * $b-space
+$b-space-xl: 4 * $b-space
+
+html
+	color: $c-text
+	font-size: $b-fontSize-s
+	line-height: $b-lineHeight
+	font-family: $b-fontFamily
+	height: 100%
+
+body
+	font-size: 100%
+	height: 100%
+
+.wrapper
+	display: block
+	display: table
+	width: 100%
+	height: 100%
+
+	> div
+		width: 50%
+		min-width: 340px
+		position: relative
+		display: table-cell
+		padding: $b-space-l
+
+		> *
+			width: 85%
+
+// -------------------------------------
+//   Components
+// -------------------------------------
+
+// ----- Title ----- //
+
+%blockTitle
+	margin: $b-space 0 $b-space-s
+	font-weight: bold
+	font-size: $b-fontSize-l
+	&:before
+		content: ''
+		display: inline-block
+		margin-bottom: -6px
+		width: 10px
+		height: 20px
+		margin-right: 7px
+
+
+// -------------------------------------
+//   Color Palette # Structures
+// -------------------------------------
+
+.colorPalette
+	background-color: $c-palette-background
+
+// -------------------------------------
+//   Color Palette # Scaffolding
+// -------------------------------------
+
+.colorPalette-list
+	float: right
+
+.colorPalette-title
+	@extend %blockTitle
+	color: $c-text-invert
+	border-bottom: 1px rgba(white, .3) solid
+	&:first-child
+		margin-top: 0
+	&:before
+		background-color: rgba(white, .3)
+
+.colorPalette-color
+	@include display-flex(inline-flex)
+	@include flex-direction(row)
+	@include border-radius(3px)
+	position: relative
+	overflow: hidden
+	width: 90px
+	height: 130px
+	margin: 2%
+	background-color: #eee
+	margin-start: 0px
+	-webkit-margin-start: 0px
+
+.colorPalette-detail
+	position: absolute
+	bottom: 0
+	height: 40px
+	display: block
+	width: inherit
+	background-color: white
+	p
+		margin-top: 2px
+		text-align: center
+	span
+		font-weight: bold
+
+
+// -------------------------------------
+//   Typography # Structures
+// -------------------------------------
+
+.typography
+	vertical-align: top
+
+// -------------------------------------
+//   Typography # Scaffolding
+// -------------------------------------
+
+.typography-list
+	float: left
+
+.typography-title
+	@extend %blockTitle
+	display: block
+	margin-top: 11px
+	width: inherit
+	color: $c-text
+	border-bottom: 1px $c-text solid
+	&:before
+		background-color: $c-text
+
+.typography-fontSetting
+	width: inherit
+	color: $c-text-secondary
+	dt
+		font-weight: bold
+
+.typography-sample
+	width: inherit
+	list-style: none
+	margin-left: -40px
+	li
+		position: relative
+		height: 50px
+		line-height: 50px
+		span
+			position: absolute
+			height: inherit
+			right: 0
+			top: 50%
+			margin-top: -25px
+			font-size: 12px
+			font-weight: normal
+			color: $c-text
+
+.typography-demo
+	width: inherit
+	span[class^="typography_Header"]
+		display: block
+		clear: both
