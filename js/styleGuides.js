@@ -101,17 +101,24 @@ $(function(){
 	//   initializing
 	// -------------------------------------
 
+	$('body')
+		.append('<p class="typography-demoText-tw"></p>')
+		.find('.typography-demoText-tw')
+		.append('<span class="typography_Header1 lipsum(1,7)"><!-- Header 1 --></span><span class="typography_Header2 lipsum(1,10)"><!-- Header 2 --></span><span class="typography_Paragraph lipsum(1,10-20)"><!-- Paragraph --></span><span class="typography_Header3 lipsum(1,5-12)"></span><span class="typography_Paragraph lipsum(1,60-100)"><!-- Paragraph --></span><span class="typography_Link lipsum(1,10-15)"></span><span class="typography_Paragraph lipsum(1,60-100)"><!-- Paragraph --></span><span class="typography_Header3 lipsum(1,5-12)"></span><span class="typography_Paragraph lipsum(1,100-150)"><!-- Paragraph --></span>');
+
 	var $colorPalette_list = $('.colorPalette-list'),
 			$typography_fontSize = $('.typography-fontSize'),
 			$typography_fontFamily = $('.typography-fontFamily'),
-			$typography_sample =  $('.typography-sample'),
-			$typography_demo = $('.typography-demo');
+			$typography_sample = $('.typography-sample'),
+			$typography_demoLang_a = $('.typography-demoLang a'),
+			$typography_demoText = $('.typography-demoText'),
+			$typography_demoText_tw = $('.typography-demoText-tw');
 
 	(function initializing() {
-		$typography_fontSize.html(TypographySetting.size);
-		$typography_fontFamily.html(TypographySetting.family);
 		displayColorPalette(ColorPaletteData);
 		displayTypography(TypographyData, ColorPaletteData);
+		$typography_fontSize.html(TypographySetting.size);
+		$typography_fontFamily.html(TypographySetting.family);
 	})();
 
 	// -------------------------------------
@@ -151,45 +158,61 @@ $(function(){
 				});
 		}
 
-		$typography_demo.append('<span class="typography_Header1 lipsum(1,7)"><!-- Header 1 --></span><span class="typography_Header2 lipsum(1,10)"><!-- Header 2 --></span><span class="typography_Paragraph lipsum(1,10-20)"><!-- Paragraph --></span><span class="typography_Header3 lipsum(1,5-12)"></span><span class="typography_Paragraph lipsum(1,60-100)"><!-- Paragraph --></span><span class="typography_Link lipsum(1,10-15)"></span><span class="typography_Paragraph lipsum(1,60-100)"><!-- Paragraph --></span><span class="typography_Header3 lipsum(1,5-12)"></span><span class="typography_Paragraph lipsum(1,100-150)"><!-- Paragraph --></span>')
-			/* Header 1 */
-			.find('.typography_Header1').css({
-				'color': getColor(0),
-				'font-size': data[0].fontSize,
-				'font-weight': data[0].fontWeight,
-				'line-height': 2
-			})
+		$typography_demoLang_a.click(function(){
+			if ($(this).hasClass('zh-tw')) {
+				$typography_demoText.html($typography_demoText_tw.html());
+			} else if ($(this).hasClass('zh-cn')) {
+				$typography_demoText.html('<span class="typography_Header1">其知可及也，子曰？</span><span class="typography_Header2">予有乱臣十人。</span><span class="typography_Paragraph">殊绝于人，学而时习之。受命以来，然涉险被创，曰，不贰过。</span><span class="typography_Header3">尔爱其羊。</span><span class="typography_Paragraph">宫中府中。出曰。文胜质则史，天府之土，吾未见刚者，子谓仲弓曰。在秦张良锥。可知也，罔之生也幸而免，不如丘之好学也，不慕荣利。为稽侍中血。则民不服，好之者不如乐之者。</span><span class="typography_Link">何为其然也！</span><span class="typography_Paragraph">不敬，子贡曰，况臣弩下。无违。千室之邑？颜渊？子曰。凡事如是。非臣之明所能逆睹也。子闻之，子张问，贤贤易色。非尔所及也。</span><span class="typography_Header3">足则吾能征之矣，子夏问孝。</span><span class="typography_Paragraph">山节藻梲。信而好古。忠志之士，不亦说乎，斯可矣。斯害也已，不可陷也，参乎，诔曰，子曰！惟坐而待亡，子曰，颠沛必于是。子曰，不踰矩，临大节而不可夺也。令尹子文三仕为令尹，不如林放乎，见义不为。</span>')
+			} else {
+				$typography_demoText.html('<span class="typography_Header1">Lorem Ipsum</span><span class="typography_Header2">Muskehounds are always ready.</span><span class="typography_Paragraph"> One for all and all for one, helping everybody.</span><span class="typography_Header3">One for all and all for one</span><span class="typography_Paragraph">Sharing everything with fun, that is the way to be. One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, can sound pretty corny. If you have got a problem chum, think how it could be.</span><span class="typography_Link">There is a voice that keeps on calling me.</span><span class="typography_Paragraph">Down the road, that is where I will always be. Every stop I make, I make a new friend.</span><span class="typography_Header3">I will just keep moving on.</span><span class="typography_Paragraph">Thunder, thunder, thundercats, Ho! Thundercats are on the move, Thundercats are loose. Feel the magic, hear the roar, Thundercats are loose. Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats!</span>')
+			}
 
-			/* Header 2 */
-			.parent().find('.typography_Header2').css({
-				'color': getColor(1),
-				'font-size': data[1].fontSize,
-				'font-weight': data[1].fontWeight,
-				'line-height': 1.8
-			})
+			if( ! $(this).hasClass('is-active')) {
+				$(this).addClass('is-active').siblings('a').removeClass('is-active');
+			}
 
-			/* Header 3 */
-			.parent().find('.typography_Header3').css({
-				'color': getColor(2),
-				'font-size': data[2].fontSize,
-				'font-weight': data[2].fontWeight,
-				'margin-top': '.8em'
-			})
+			RenderDemoText();
+		})
 
-			/* Paragraph */
-			.parent().find('.typography_Paragraph').css({
-				'color': getColor(4),
-				'font-size': data[4].fontSize,
-				'font-weight': data[4].fontWeight
-			})
+		function RenderDemoText() {
+			$typography_demoText.find('.typography_Header1').css({
+					'color': getColor(0),
+					'font-size': data[0].fontSize,
+					'font-weight': data[0].fontWeight,
+					'line-height': 2
+				})
 
-			/* Link */
-			.parent().find('.typography_Link').css({
-				'display': 'inline-block',
-				'color': getColor(5),
-				'font-size': data[5].fontSize,
-				'font-weight': data[5].fontWeight
-			})
+				/* Header 2 */
+				.parent().find('.typography_Header2').css({
+					'color': getColor(1),
+					'font-size': data[1].fontSize,
+					'font-weight': data[1].fontWeight,
+					'line-height': 1.8
+				})
+
+				/* Header 3 */
+				.parent().find('.typography_Header3').css({
+					'color': getColor(2),
+					'font-size': data[2].fontSize,
+					'font-weight': data[2].fontWeight,
+					'margin-top': '.8em'
+				})
+
+				/* Paragraph */
+				.parent().find('.typography_Paragraph').css({
+					'color': getColor(4),
+					'font-size': data[4].fontSize,
+					'font-weight': data[4].fontWeight
+				})
+
+				/* Link */
+				.parent().find('.typography_Link').css({
+					'display': 'inline-block',
+					'color': getColor(5),
+					'font-size': data[5].fontSize,
+					'font-weight': data[5].fontWeight
+				})
+		}
 
 		function getColor(val) {
 			for (var k in colorData) {
@@ -198,6 +221,11 @@ $(function(){
 				}
 			}
 		}
+
+		// ----- init ----- //
+		$typography_demoText.html($typography_demoText_tw.html());
+		RenderDemoText();
+
 	}
 
 })
