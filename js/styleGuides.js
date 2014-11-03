@@ -11,9 +11,10 @@ $(function(){
 			"name": "CONTENT BLOCK",
 			"color" : [
 				{ "name": "Header", "hex": "#212121" },
-				{ "name": "Clock", "hex": "#0d0d0d" },
 				{ "name": "Menu Icon", "hex": "#646464" },
-				{ "name": "Hr", "hex": "#eeeeee" }
+				{ "name": "Hr", "hex": "#eeeeee" },
+				{ "name": "Bottom", "hex": "#f5f5f5" },
+				{ "name": "Bottom hover", "hex": "#ececec" }
 			]
 		},
 
@@ -22,6 +23,7 @@ $(function(){
 			"color" : [
 				{ "name": "Base", "hex": "#ececec" },
 				{ "name": "Layer 1", "hex": "#f4f4f4" },
+				{ "name": "Layer 2", "hex": "#f8f8f8" },
 				{ "name": "Top Layer", "hex": "#ffffff" }
 			]
 		},
@@ -30,8 +32,9 @@ $(function(){
 			"name": "TEXT",
 			"color" : [
 				{ "name": "Default", "hex": "#575757" },
-				{ "name": "Main Color", "hex": "#01579b" },
 				{ "name": "Secondary", "hex": "#9d9d9d" },
+				{ "name": "Main Color", "hex": "#01579b" },
+				{ "name": "Link", "hex": "#4fa5e9" },
 				{ "name": "Counter", "hex": "#e90707" }
 			]
 		},
@@ -43,6 +46,22 @@ $(function(){
 				{ "name": "Stop", "hex": "#ff0606" },
 				{ "name": "Pause", "hex": "#f4511e" },
 				{ "name": "Disable", "hex": "#c7c7c7" }
+			]
+		},
+
+		{
+			"name": "11 PICKS 5",
+			"color" : [
+				{ "name": "Num 1", "hex": "#ffeb3b" },
+				{ "name": "Num 2", "hex": "#0091ea" },
+				{ "name": "Num 3", "hex": "#424242" },
+				{ "name": "Num 4", "hex": "#fb8c00" },
+				{ "name": "Num 5", "hex": "#26c6da" },
+				{ "name": "Num 6", "hex": "#3f51b5" },
+				{ "name": "Num 7", "hex": "#bdbdbd" },
+				{ "name": "Num 8", "hex": "#e51c23" },
+				{ "name": "Num 9", "hex": "#4e342e" },
+				{ "name": "Num 10", "hex": "#2baf2b" }
 			]
 		}
 	]
@@ -90,6 +109,13 @@ $(function(){
 
 		{
 			"name": "Link",
+			"color": "Link",
+			"fontSize": "90%",
+			"fontWeight": "Normal"
+		},
+
+		{
+			"name": "Link:hover",
 			"color": "Main Color",
 			"fontSize": "90%",
 			"fontWeight": "Normal"
@@ -208,10 +234,23 @@ $(function(){
 				/* Link */
 				.parent().find('.typography_Link').css({
 					'display': 'inline-block',
+					'cursor': 'pointer',
 					'color': getColor(5),
 					'font-size': data[5].fontSize,
 					'font-weight': data[5].fontWeight
-				})
+				}).mouseenter(function(event){
+					$(this).css({
+						'color': getColor(6),
+						'font-size': data[6].fontSize,
+						'font-weight': data[6].fontWeight
+					})
+				}).mouseleave(function(event) {
+					$(this).css({
+						'color': getColor(5),
+						'font-size': data[5].fontSize,
+						'font-weight': data[5].fontWeight
+					})
+				});
 		}
 
 		function getColor(val) {
